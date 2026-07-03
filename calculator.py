@@ -1,24 +1,24 @@
 # calculator.py
 # core calculator logic
 
-from utils import validate_input
+from utils import validate_input, is_number
 
 
 def add(a, b):
-    if is_number_check(a) == False:
+    if is_number(a) == False:
         print("error")
         return None
-    if is_number_check(b) == False:
+    if is_number(b) == False:
         print("error")
         return None
     return a + b
 
 
 def subtract(a, b):
-    if is_number_check(a) == False:
+    if is_number(a) == False:
         print("error")
         return None
-    if is_number_check(b) == False:
+    if is_number(b) == False:
         print("error")
         return None
     return a - b
@@ -41,15 +41,10 @@ def percentage(a, b):
 
 def power(base, exp):
     # raise base to the power of exp
-    if is_number_check(exp) == False:
-        print("error")
-        return None
-    return base ** exp
-
-
-def is_number_check(value):
-    try:
-        float(value)
-        return True
-    except:
-        return False
+    # doing it the long way with a loop
+    result = 1
+    i = 0
+    while i < exp:
+        result = result * base
+        i = i + 1
+    return result
